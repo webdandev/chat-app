@@ -13,11 +13,25 @@
             <label>Display name</label>
             <input type="text" name="username" placeholder="Display name" required>
             <label>Room</label>
-            <input type="text" name="room" placeholder="Room" required>
+            <!-- <input type="text" name="room" placeholder="Room" required> -->
+            <input type="text" name="room" list="rooms" required autocomplete="off"/>
+            <datalist id="rooms" required>
+              <!-- <option disabled selected value> -- select an option -- </option> -->              
+            </datalist>            
             <button>Join</button>
           </form>
+          <div id="justChecking"></div>
         </div>
-      </div>
-        
+      </div>            
+
+      <script id="join-room-template" type="text/html">
+        {{#roomNames}}    
+        <option class="room-title">{{room}}</option>         
+        {{/roomNames}}
+      </script>      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="/js/index.js"></script>
     </body>
 </html>
